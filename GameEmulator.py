@@ -6,12 +6,19 @@ class GameEmulator:
   def baseNumChoice(self):
     return [max(PList[i]) for i in range(4)]
   
-  def selectedBorS(self, low, col, num):
-    CList[low][col] += 1
-    PList[low][col] += ((CList[low][col]-1)*PList[low][col]+(num/4))/CList[low][col]
+  def selectedS(self, row, col, num):
+    CList[row][col] += 1
+    PList[row][col] += ((CList[row][col]-1)*PList[row][col]+(num/4))/CList[row][col]
+    
+  def selectedB(self, row, col, num):
+      for i in range(4):
+          if i == row:
+              continue
+          CList[i][col] += 1
+          PList[i][col] += ((CList[i][col]-1)*PList[i][col]+(num/4))/CList[i][col]
   
-  def selectedBandS(self, low, col, W):
-    PList[low][col] += num*W
+  def selectedBandS(self, row, col, W):
+    PList[row][col] += num*W
 
-  def delete(self, low, col):
-    PList[low][col] = 0
+  def delete(self, row, col):
+    PList[row][col] = 0
