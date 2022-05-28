@@ -22,3 +22,6 @@ class GameEmulator:
 
   def delete(self, row, col):
     PList[row][col] = 0
+    
+  def compare(self, SList, AList):
+    return len([SList.pop( i - (8 - len(SList) ) ) for i in range(4) if SList[ i - (8 - len(SList)) ] == AList[i]]) + 10*len(set.intersection(set(AList), set(SList)))
